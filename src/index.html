@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Raus die Maus – Köln entdecken</title>
+    <meta
+      name="description"
+      content="Veranstaltungen und Ausflugsziele in Köln – gefiltert nach Datum, Alter, Veedel und Aktivitätsart."
+    />
+    <style>
+      :root {
+        --bg: #fffaf3;
+        --ink: #20201f;
+        --muted: #6d6a63;
+        --accent: #ef6c4d;
+        --accent2: #ffd66b;
+        --card: #fff;
+        --line: #e8e0d4;
+        --shadow: 0 10px 30px rgba(40, 30, 15, 0.08);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      }
+      header {
+        background: linear-gradient(135deg, #fff1d0, #ffe0cf);
+        padding: 28px 20px 42px;
+        border-bottom: 1px solid var(--line);
+      }
+      nav,
+      .hero,
+      .wrap {
+        max-width: 1180px;
+        margin: auto;
+      }
+      .brand {
+        font-weight: 900;
+        font-size: 24px;
+        letter-spacing: -0.5px;
+      }
+      .brand span {
+        color: var(--accent);
+      }
+      .hero {
+        padding-top: 38px;
+      }
+      .eyebrow {
+        font-weight: 800;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 12px;
+      }
+      h1 {
+        font-size: clamp(38px, 6vw, 72px);
+        line-height: 0.98;
+        max-width: 800px;
+        margin: 10px 0 16px;
+        letter-spacing: -2px;
+      }
+      .hero p {
+        font-size: 18px;
+        max-width: 700px;
+        color: #514e47;
+      }
+      .search {
+        margin-top: 25px;
+        display: flex;
+        gap: 10px;
+        max-width: 700px;
+      }
+      .search input {
+        flex: 1;
+        padding: 15px 18px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        font-size: 16px;
+        background: white;
+      }
+      main {
+        max-width: 1180px;
+        margin: 26px auto;
+        padding: 0 20px;
+      }
+      .filters {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 18px;
+        box-shadow: var(--shadow);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+      label {
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--muted);
+        display: block;
+        margin: 0 0 6px;
+      }
+      select,
+      input[type="date"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 11px;
+        background: #fff;
+        font: inherit;
+      }
+      button {
+        border: 0;
+        border-radius: 11px;
+        padding: 12px 15px;
+        font-weight: 800;
+        cursor: pointer;
+        background: var(--ink);
+        color: white;
+      }
+      .reset {
+        background: #f0ece4;
+        color: var(--ink);
+        align-self: end;
+      }
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 24px 0 12px;
+      }
+      .count {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+      }
+      .visual {
+        height: 135px;
+        background: linear-gradient(135deg, #ffd66b, #ef6c4d);
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+      .visual .emoji {
+        font-size: 42px;
+      }
+      .tag {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 6px 9px;
+        border-radius: 99px;
+        font-size: 11px;
+        font-weight: 900;
+      }
+      .body {
+        padding: 17px;
+      }
+      .date {
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .title {
+        font-size: 20px;
+        font-weight: 900;
+        margin: 5px 0;
+      }
+      .desc {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+      .chips {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin: 12px 0;
+      }
+      .chip {
+        background: #f5f1ea;
+        border-radius: 99px;
+        padding: 6px 8px;
+        font-size: 11px;
+      }
+      .footer {
+        margin-top: auto;
+        padding: 0 17px 17px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .more {
+        color: var(--ink);
+        font-weight: 900;
+      }
+      .empty {
+        text-align: center;
+        padding: 60px 20px;
+        color: var(--muted);
+        grid-column: 1/-1;
+      }
+      @media (max-width: 850px) {
+        .filters {
+          grid-template-columns: 1fr 1fr;
+        }
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 560px) {
+        .filters {
+          grid-template-columns: 1fr;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .search {
+          flex-direction: column;
+        }
+        h1 {
+          letter-spacing: -1px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="brand">🐭 <span>Raus die Maus</span> · Köln</div>
+      </nav>
+      <div class="hero">
+        <div class="eyebrow">Köln mit Kindern & Familie</div>
+        <h1>Rausgehen. Entdecken. Spaß haben.</h1>
+        <p>
+          Eine klare Übersicht für Veranstaltungen und Aktivitäten in Köln – mit
+          Filtern für Datum, Alter, Veedel und Art der Aktivität.
+        </p>
+        <div class="search">
+          <input
+            id="q"
+            placeholder="🔎 Suche z. B. Flohmarkt, Theater, Ehrenfeld …"
+          />
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="filters">
+        <div><label>Ab Datum</label><input id="date" type="date" /></div>
+        <div>
+          <label>Alter</label
+          ><select id="age">
+            <option value="">Alle Altersgruppen</option>
+            <option>0–3 Jahre</option>
+            <option>3–6 Jahre</option>
+            <option>6–10 Jahre</option>
+            <option>10–14 Jahre</option>
+            <option>14+ Jahre</option>
+            <option>Familie</option>
+          </select>
+        </div>
+        <div>
+          <label>Veedel</label
+          ><select id="veedel">
+            <option value="">Alle Veedel</option>
+            <option>Ehrenfeld</option>
+            <option>Sülz</option>
+            <option>Deutz</option>
+            <option>Neustadt-Süd</option>
+            <option>Innenstadt</option>
+            <option>Nippes</option>
+            <option>Riehl</option>
+            <option>Kalk</option>
+          </select>
+        </div>
+        <div>
+          <label>Aktivität</label
+          ><select id="type">
+            <option value="">Alle Aktivitäten</option>
+            <option>Indoor</option>
+            <option>Outdoor</option>
+            <option>Flohmarkt</option>
+            <option>Konzert</option>
+            <option>Theater</option>
+            <option>Straßenfest</option>
+            <option>Familienevent</option>
+          </select>
+        </div>
+        <div
+          style="grid-column: 1/-1; display: flex; justify-content: flex-end"
+        >
+          <button class="reset" id="reset">Filter zurücksetzen</button>
+        </div>
+      </section>
+      <div class="meta">
+        <strong id="heading">Aktuelle Tipps</strong
+        ><span class="count" id="count"></span>
+      </div>
+      <section class="grid" id="grid"></section>
+    </main>
+    <script>
+      const events = [
+        {
+          date: "2026-09-05",
+          title: "Familienflohmarkt im Veedel",
+          desc: "Stöbern, Schätze entdecken und entspannt ins Wochenende starten.",
+          age: ["Familie", "3–6 Jahre", "6–10 Jahre"],
+          veedel: "Ehrenfeld",
+          types: ["Outdoor", "Flohmarkt", "Familienevent"],
+          emoji: "🧸",
+        },
+        {
+          date: "2026-09-06",
+          title: "Kinderkonzert am Rhein",
+          desc: "Musik zum Mitmachen für kleine und große Ohren.",
+          age: ["Familie", "3–6 Jahre", "6–10 Jahre"],
+          veedel: "Deutz",
+          types: ["Outdoor", "Konzert", "Familienevent"],
+          emoji: "🎵",
+        },
+        {
+          date: "2026-09-12",
+          title: "Theater für kleine Entdecker",
+          desc: "Ein spielerisches Bühnenabenteuer mit viel Fantasie.",
+          age: ["3–6 Jahre", "6–10 Jahre"],
+          veedel: "Innenstadt",
+          types: ["Indoor", "Theater", "Familienevent"],
+          emoji: "🎭",
+        },
+        {
+          date: "2026-09-13",
+          title: "Straßenfest mit Spielstraße",
+          desc: "Bunte Nachbarschaft, Spiele, Essen und Platz zum Toben.",
+          age: ["Familie", "0–3 Jahre", "3–6 Jahre", "6–10 Jahre"],
+          veedel: "Sülz",
+          types: ["Outdoor", "Straßenfest", "Familienevent"],
+          emoji: "🎈",
+        },
+        {
+          date: "2026-09-19",
+          title: "Natur-Entdeckungstag",
+          desc: "Draußen unterwegs: Tiere, Pflanzen und kleine Abenteuer.",
+          age: ["3–6 Jahre", "6–10 Jahre", "10–14 Jahre"],
+          veedel: "Riehl",
+          types: ["Outdoor", "Familienevent"],
+          emoji: "🌿",
+        },
+        {
+          date: "2026-09-20",
+          title: "Kreativwerkstatt für Kids",
+          desc: "Malen, bauen und ausprobieren – ideal für Regentage.",
+          age: ["3–6 Jahre", "6–10 Jahre", "10–14 Jahre"],
+          veedel: "Nippes",
+          types: ["Indoor", "Familienevent"],
+          emoji: "🎨",
+        },
+        {
+          date: "2026-09-26",
+          title: "Veedel-Flohmarkt",
+          desc: "Secondhand, Spielzeug und Kinderkleidung in entspannter Atmosphäre.",
+          age: ["Familie"],
+          veedel: "Kalk",
+          types: ["Outdoor", "Flohmarkt"],
+          emoji: "🛍️",
+        },
+        {
+          date: "2026-09-27",
+          title: "Kleines Familienfestival",
+          desc: "Ein ganzer Tag voller Bühnenprogramm, Spiele und Mitmachaktionen.",
+          age: ["Familie", "3–6 Jahre", "6–10 Jahre", "10–14 Jahre"],
+          veedel: "Neustadt-Süd",
+          types: ["Outdoor", "Konzert", "Theater", "Familienevent"],
+          emoji: "☀️",
+        },
+      ];
+      const $ = (id) => document.getElementById(id);
+      function render() {
+        const q = $("q").value.toLowerCase(),
+          d = $("date").value,
+          a = $("age").value,
+          v = $("veedel").value,
+          t = $("type").value;
+        const out = events.filter(
+          (e) =>
+            (!q ||
+              [e.title, e.desc, e.veedel, ...e.types]
+                .join(" ")
+                .toLowerCase()
+                .includes(q)) &&
+            (!d || e.date >= d) &&
+            (!a || e.age.includes(a)) &&
+            (!v || e.veedel === v) &&
+            (!t || e.types.includes(t))
+        );
+        $("count").textContent = out.length + " Termine";
+        $("grid").innerHTML = out.length
+          ? out
+              .map(
+                (e) =>
+                  `<article class="card"><div class="visual"><span class="emoji">${
+                    e.emoji
+                  }</span><span class="tag">${
+                    e.types[0]
+                  }</span></div><div class="body"><div class="date">${new Date(
+                    e.date + "T12:00:00"
+                  ).toLocaleDateString("de-DE", {
+                    weekday: "short",
+                    day: "2-digit",
+                    month: "2-digit",
+                  })}</div><div class="title">${
+                    e.title
+                  }</div><div class="desc">${
+                    e.desc
+                  }</div><div class="chips">${e.types
+                    .map((x) => `<span class="chip">${x}</span>`)
+                    .join("")}</div></div><div class="footer"><span>📍 ${
+                    e.veedel
+                  }</span><span class="more">Details →</span></div></article>`
+              )
+              .join("")
+          : `<div class="empty"><div style="font-size:42px">🐭</div><h2>Nichts gefunden</h2><p>Probier einen anderen Filter oder setze die Auswahl zurück.</p></div>`;
+      }
+      ["q", "date", "age", "veedel", "type"].forEach((id) =>
+        $(id).addEventListener("input", render)
+      );
+      $("reset").onclick = () => {
+        ["q", "date"].forEach((id) => ($(id).value = ""));
+        ["age", "veedel", "type"].forEach((id) => ($(id).value = ""));
+        render();
+      };
+      render();
+    </script>
+  </body>
+</html>
