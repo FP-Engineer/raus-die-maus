@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Raus die Maus – Köln entdecken</title>
+
+    <meta
+      name="description"
+      content="Veranstaltungen und Ausflugsziele in Köln – gefiltert nach Datum, Alter, Veedel und Aktivitätsart."
+    />
+
+    <link rel="stylesheet" href="./src/style.css" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content"> Zum Inhalt springen </a>
+
+    <header class="site-header">
+      <div class="brand" aria-label="Raus die Maus – Köln">
+        <span aria-hidden="true">🐭</span>
+        <span>Raus die Maus</span>
+        <span aria-hidden="true"> · </span>
+        <span>Köln</span>
+      </div>
+
+      <div class="hero">
+        <p class="eyebrow">Köln mit Kindern &amp; Familie</p>
+
+        <h1>Rausgehen. Entdecken. Spaß haben.</h1>
+
+        <p>
+          Eine klare Übersicht für Veranstaltungen und Aktivitäten in Köln – mit
+          Filtern für Datum, Alter, Veedel und Art der Aktivität.
+        </p>
+
+        <form
+          class="search"
+          role="search"
+          aria-label="Veranstaltungen durchsuchen"
+          onsubmit="return false;"
+        >
+          <label class="visually-hidden" for="q">
+            Veranstaltungen durchsuchen
+          </label>
+
+          <input
+            id="q"
+            name="q"
+            type="search"
+            placeholder="z. B. Flohmarkt, Theater oder Ehrenfeld"
+            autocomplete="off"
+            aria-controls="grid"
+          />
+        </form>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="filters" aria-labelledby="filter-heading">
+        <h2 id="filter-heading" class="visually-hidden">
+          Veranstaltungen filtern
+        </h2>
+
+        <div class="filter-field">
+          <label for="date">Ab Datum</label>
+          <input id="date" name="date" type="date" aria-controls="grid" />
+        </div>
+
+        <div class="filter-field">
+          <label for="age">Alter</label>
+          <select id="age" name="age" aria-controls="grid">
+            <option value="">Alle Altersgruppen</option>
+            <option value="0–3 Jahre">0–3 Jahre</option>
+            <option value="3–6 Jahre">3–6 Jahre</option>
+            <option value="6–10 Jahre">6–10 Jahre</option>
+            <option value="10–14 Jahre">10–14 Jahre</option>
+            <option value="14+ Jahre">14+ Jahre</option>
+            <option value="Familie">Familie</option>
+          </select>
+        </div>
+
+        <div class="filter-field">
+          <label for="veedel">Veedel</label>
+          <select id="veedel" name="veedel" aria-controls="grid">
+            <option value="">Alle Veedel</option>
+            <option value="Ehrenfeld">Ehrenfeld</option>
+            <option value="Sülz">Sülz</option>
+            <option value="Deutz">Deutz</option>
+            <option value="Neustadt-Süd">Neustadt-Süd</option>
+            <option value="Innenstadt">Innenstadt</option>
+            <option value="Nippes">Nippes</option>
+            <option value="Riehl">Riehl</option>
+            <option value="Kalk">Kalk</option>
+          </select>
+        </div>
+
+        <div class="filter-field">
+          <label for="type">Aktivität</label>
+          <select id="type" name="type" aria-controls="grid">
+            <option value="">Alle Aktivitäten</option>
+            <option value="Indoor">Indoor</option>
+            <option value="Outdoor">Outdoor</option>
+            <option value="Flohmarkt">Flohmarkt</option>
+            <option value="Konzert">Konzert</option>
+            <option value="Theater">Theater</option>
+            <option value="Straßenfest">Straßenfest</option>
+            <option value="Familienevent">Familienevent</option>
+          </select>
+        </div>
+
+        <div class="filter-actions">
+          <button class="reset" id="reset" type="button">
+            Filter zurücksetzen
+          </button>
+        </div>
+      </section>
+
+      <section class="results" aria-labelledby="heading">
+        <header class="meta">
+          <h2 id="heading">Aktuelle Tipps</h2>
+
+          <p class="count" id="count" aria-live="polite" aria-atomic="true"></p>
+        </header>
+
+        <div class="grid" id="grid"></div>
+      </section>
+    </main>
+  </body>
+</html>

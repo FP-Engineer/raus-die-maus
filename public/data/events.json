@@ -1,0 +1,80 @@
+[
+  {
+    "id": "mock-001",
+    "date": "2026-09-05",
+    "title": "Lorem Ipsum",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "age": ["Familie", "3–6 Jahre", "6–10 Jahre"],
+    "veedel": "Ehrenfeld",
+    "types": ["Outdoor", "Flohmarkt", "Familienevent"],
+    "emoji": "🧸",
+    "imageUrl": null,
+    "instagramUrl": null,
+    "instagramTimestamp": null
+  },
+  {
+    "id": "mock-002",
+    "date": "2026-09-06",
+    "title": "Lorem Ipsum",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "age": ["Familie", "3–6 Jahre", "6–10 Jahre"],
+    "veedel": "Deutz",
+    "types": ["Outdoor", "Konzert", "Familienevent"],
+    "emoji": "🎵",
+    "imageUrl": null,
+    "instagramUrl": null,
+    "instagramTimestamp": null
+  },
+  {
+    "id": "mock-003",
+    "date": "2026-09-12",
+    "title": "Lorem Ipsum",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "age": ["3–6 Jahre", "6–10 Jahre"],
+    "veedel": "Innenstadt",
+    "types": ["Indoor", "Theater", "Familienevent"],
+    "emoji": "🎭",
+    "imageUrl": null,
+    "instagramUrl": null,
+    "instagramTimestamp": null
+  },
+  {
+    "id": "mock-004",
+    "date": "2026-09-13",
+    "title": "Lorem Ipsum",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "age": ["Familie", "0–3 Jahre", "3–6 Jahre", "6–10 Jahre"],
+    "veedel": "Sülz",
+    "types": ["Outdoor", "Straßenfest", "Familienevent"],
+    "emoji": "🎈",
+    "imageUrl": null,
+    "instagramUrl": null,
+    "instagramTimestamp": null
+  },
+  {
+    "id": "mock-005",
+    "date": "2026-09-19",
+    "title": "Lorem Ipsum",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "age": ["3–6 Jahre", "6–10 Jahre", "10–14 Jahre"],
+    "veedel": "Riehl",
+    "types": ["Outdoor", "Familienevent"],
+    "emoji": "🌿",
+    "imageUrl": null,
+    "instagramUrl": null,
+    "instagramTimestamp": null
+  },
+  {
+    "id": "mock-006",
+    "date": "2026-09-27",
+    "title": "Lorem Ipsum",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "age": ["Familie", "3–6 Jahre", "6–10 Jahre", "10–14 Jahre"],
+    "veedel": "Neustadt-Süd",
+    "types": ["Outdoor", "Konzert", "Theater", "Familienevent"],
+    "emoji": "☀️",
+    "imageUrl": null,
+    "instagramUrl": null,
+    "instagramTimestamp": null
+  }
+]
