@@ -1,3 +1,5 @@
+import "./style.css";
+
 interface EventItem {
   title: string;
   desc: string;
